@@ -12,7 +12,7 @@ const SKILLS = [
   },
   {
     category: "BASE DE DATOS",
-    items: ["PostgreSQL", "MongoDB", "Redis", "Prisma ORM", "Firebase"],
+    items: ["PostgreSQL", "MongoDB", "Redis", "Prisma ORM", "Supabase"],
   },
   {
     category: "DEVOPS & TOOLS",
@@ -93,7 +93,7 @@ const Header = styled.div`
 
 const Label = styled.span`
   display: block;
-  font-size: 9px;
+  font-size: 14px;
   letter-spacing: 4px;
   color: var(--dim);
   margin-bottom: 20px;
@@ -141,7 +141,7 @@ const Card = styled.div`
 `;
 
 const Category = styled.h4`
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 4px;
   color: var(--dim);
   margin-bottom: 24px;
