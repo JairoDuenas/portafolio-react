@@ -1,17 +1,9 @@
-import { useState } from "react";
 import styled, { css } from "styled-components";
 import { useInView } from "../../hooks/useInView";
+import { ContactForm } from "../../form/ContactForm";
 
 export function ContactSection() {
   const [ref, inView] = useInView();
-  const [sent, setSent] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-
-  const handle = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-  const submit = (e) => {
-    e.preventDefault();
-    setSent(true);
-  };
 
   return (
     <Section id="contacto" ref={ref}>
@@ -32,70 +24,30 @@ export function ContactSection() {
             Respondo en menos de 24 horas.
           </Blurb>
           <ContactLinks>
-            <ContactLink href="mailto:alex@ramirez.dev" data-hover>
-              alex@ramirez.dev
+            <ContactLink href="mailto:jairo_251180@hotmail.com" data-hover>
+              jairo_251180@hotmail.com
             </ContactLink>
             <ContactLink
-              href="https://github.com"
+              href="https://github.com/jairoDuenas"
               target="_blank"
               rel="noreferrer"
               data-hover
             >
-              github.com/alexramirez
+              github.com/jairodv
             </ContactLink>
             <ContactLink
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/jairodue%C3%B1as/"
               target="_blank"
               rel="noreferrer"
               data-hover
             >
-              linkedin.com/in/alexramirez
+              linkedin.com/in/jairodv
             </ContactLink>
           </ContactLinks>
         </Info>
 
         <FormWrap $visible={inView}>
-          {sent ? (
-            <Success>
-              <SuccessIcon>✓</SuccessIcon>
-              <p>¡Mensaje enviado! Te respondo pronto.</p>
-            </Success>
-          ) : (
-            <Form onSubmit={submit}>
-              <FormGroup>
-                <Input
-                  required
-                  name="name"
-                  placeholder="TU NOMBRE"
-                  value={form.name}
-                  onChange={handle}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Input
-                  required
-                  type="email"
-                  name="email"
-                  placeholder="TU EMAIL"
-                  value={form.email}
-                  onChange={handle}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Textarea
-                  required
-                  name="message"
-                  placeholder="CUÉNTAME TU PROYECTO..."
-                  rows={5}
-                  value={form.message}
-                  onChange={handle}
-                />
-              </FormGroup>
-              <SubmitBtn type="submit" data-hover>
-                ENVIAR MENSAJE
-              </SubmitBtn>
-            </Form>
-          )}
+          <ContactForm />
         </FormWrap>
       </Grid>
     </Section>
@@ -106,7 +58,6 @@ export function ContactSection() {
 const Section = styled.section`
   padding: 120px 60px;
   border-top: 1px solid var(--border);
-
   @media (max-width: 768px) {
     padding: 80px 24px;
   }
@@ -114,7 +65,6 @@ const Section = styled.section`
 
 const Header = styled.div`
   margin-bottom: 80px;
-
   & > * {
     opacity: 0;
     transform: translateY(16px);
@@ -122,7 +72,6 @@ const Header = styled.div`
       opacity 0.5s,
       transform 0.5s;
   }
-
   ${({ $visible }) =>
     $visible &&
     css`
@@ -134,7 +83,6 @@ const Header = styled.div`
         transition-delay: 0.1s;
       }
     `}
-
   @media (max-width: 768px) {
     margin-bottom: 48px;
   }
@@ -164,7 +112,6 @@ const Grid = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: start;
-
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 48px;
@@ -208,7 +155,6 @@ const ContactLink = styled.a`
   transition:
     color 0.2s,
     gap 0.2s;
-
   &::before {
     content: "→";
     font-size: 11px;
@@ -235,86 +181,4 @@ const FormWrap = styled.div`
       opacity: 1;
       transform: translateX(0);
     `}
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-`;
-
-const FormGroup = styled.div``;
-
-const inputStyles = css`
-  width: 100%;
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--fg);
-  font-family: var(--font-body);
-  font-size: 11px;
-  letter-spacing: 2px;
-  padding: 14px 18px;
-  outline: none;
-  transition: border-color 0.2s;
-
-  &::placeholder {
-    color: var(--dim);
-  }
-  &:focus {
-    border-color: var(--fg);
-  }
-`;
-
-const Input = styled.input`
-  ${inputStyles}
-`;
-
-const Textarea = styled.textarea`
-  ${inputStyles}
-  resize: none;
-  min-height: 110px;
-`;
-
-const SubmitBtn = styled.button`
-  display: inline-block;
-  font-family: var(--font-body);
-  font-size: 10px;
-  letter-spacing: 3px;
-  padding: 14px 32px;
-  background: var(--fg);
-  color: var(--bg);
-  border: 1px solid var(--fg);
-  transition:
-    background 0.2s,
-    color 0.2s,
-    transform 0.15s;
-  align-self: flex-start;
-
-  &:hover {
-    background: transparent;
-    color: var(--fg);
-  }
-  &:active {
-    transform: scale(0.97);
-  }
-`;
-
-const Success = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  padding: 72px 40px;
-  border: 1px solid var(--border);
-  text-align: center;
-  color: #555;
-  letter-spacing: 2px;
-  font-size: 11px;
-`;
-
-const SuccessIcon = styled.span`
-  font-family: var(--font-display);
-  font-size: 52px;
-  color: var(--fg);
 `;
