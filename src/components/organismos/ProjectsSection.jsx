@@ -127,7 +127,7 @@ const Header = styled.div`
 
 const Label = styled.span`
   display: block;
-  font-size: 9px;
+  font-size: 14px;
   letter-spacing: 4px;
   color: var(--dim);
   margin-bottom: 20px;
@@ -202,21 +202,21 @@ const ProjectTitle = styled.h3`
 `;
 
 const ProjectDesc = styled.p`
-  font-size: 12px;
+  font-size: 15px;
   color: #666;
   line-height: 1.8;
-  max-width: 500px;
+  max-width: 550px;
   margin-bottom: 14px;
 `;
 
 const Tags = styled.div`
   display: flex;
-  gap: 8px;
+  gap: 9px;
   flex-wrap: wrap;
 `;
 
 const Tag = styled.span`
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 2px;
   padding: 4px 10px;
   border: 1px solid var(--border);
@@ -236,7 +236,7 @@ const Meta = styled.div`
 `;
 
 const Year = styled.span`
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 2px;
   color: var(--dim);
 `;

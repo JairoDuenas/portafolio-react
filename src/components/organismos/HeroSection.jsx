@@ -242,7 +242,7 @@ const Stat = styled.div`
 
 const StatNum = styled.span`
   font-family: var(--font-display);
-  font-size: 58px;
+  font-size: 50px;
   line-height: 1;
 `;
 const StatLabel = styled.span`
