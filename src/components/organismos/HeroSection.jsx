@@ -13,17 +13,21 @@ export function HeroSection() {
     <Section id="inicio">
       <Noise opacity={0.035} />
       <Content $visible={loaded}>
+        <AvatarWrap>
+          <Avatar src="/foto.png" alt="Jairo Dueñas" />
+          <AvatarRing />
+        </AvatarWrap>
         <Eyebrow>DESARROLLADOR DE SOFTWARE</Eyebrow>
         <Title>
           <TitleLine>HOLA,</TitleLine>
-          <TitleLine $outline>SOY Jhon</TitleLine>
+          <TitleLine $outline>SOY Jairo</TitleLine>
           <TitleLine>Dueñas.</TitleLine>
         </Title>
-        <Desc>
+        <Description>
           Construyo productos digitales que resuelven problemas reales.
           <br />
           Full-stack con foco en experiencias rápidas, escalables y precisas.
-        </Desc>
+        </Description>
         <Actions>
           <BtnPrimary href="#proyectos" data-hover>
             VER PROYECTOS
@@ -70,6 +74,11 @@ const scrollAnim = keyframes`
   50%       { opacity: 0.2; }
 `;
 
+const ringAnim = keyframes`
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+`;
+
 /* ── styled ── */
 const Section = styled.section`
   min-height: 100vh;
@@ -95,8 +104,42 @@ const Content = styled.div`
     `}
 `;
 
+const AvatarWrap = styled.div`
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 28px;
+
+  @media (max-width: 768px) {
+    width: 68px;
+    height: 68px;
+  }
+`;
+
+const Avatar = styled.img`
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  position: relative;
+  z-index: 1;
+  filter: grayscale(20%);
+`;
+
+const AvatarRing = styled.div`
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1.5px solid transparent;
+  border-top-color: var(--fg);
+  border-right-color: var(--dim);
+  animation: ${ringAnim} 6s linear infinite;
+`;
+
 const Eyebrow = styled.p`
-  font-size: 10px;
+  font-size: 15px;
   letter-spacing: 5px;
   color: var(--dim);
   margin-bottom: 24px;
@@ -110,6 +153,7 @@ const Title = styled.h1`
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
+  gap: 10px;
 `;
 
 const TitleLine = styled.span`
@@ -122,8 +166,8 @@ const TitleLine = styled.span`
     `}
 `;
 
-const Desc = styled.p`
-  font-size: 14px;
+const Description = styled.p`
+  font-size: 17px;
   color: #777;
   max-width: 460px;
   line-height: 1.9;
@@ -139,7 +183,7 @@ const Actions = styled.div`
 const BtnBase = styled.a`
   display: inline-block;
   font-family: var(--font-body);
-  font-size: 10px;
+  font-size: 13px;
   letter-spacing: 3px;
   padding: 14px 32px;
   transition:
@@ -198,11 +242,11 @@ const Stat = styled.div`
 
 const StatNum = styled.span`
   font-family: var(--font-display);
-  font-size: 48px;
+  font-size: 58px;
   line-height: 1;
 `;
 const StatLabel = styled.span`
-  font-size: 9px;
+  font-size: 13px;
   letter-spacing: 3px;
   color: var(--dim);
 `;

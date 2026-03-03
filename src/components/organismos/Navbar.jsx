@@ -20,7 +20,7 @@ export function Navbar() {
   return (
     <Nav $scrolled={scrolled}>
       <Logo href="#inicio">
-        DEV<LogoDot>.</LogoDot>
+        Jairodv<LogoDot>.</LogoDot>
       </Logo>
       <Links>
         {NAV_ITEMS.map(({ label, href }) => (
