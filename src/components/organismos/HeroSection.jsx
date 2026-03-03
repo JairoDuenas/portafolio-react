@@ -265,9 +265,9 @@ const ScrollHint = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 3px;
-  color: var(--dim);
+  color: #777;
 
   @media (max-width: 768px) {
     display: none;

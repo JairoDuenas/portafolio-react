@@ -36,5 +36,5 @@ const Canvas = styled.canvas`
   pointer-events: none;
   opacity: ${({ $opacity }) => $opacity};
   mix-blend-mode: overlay;
-  //background: red;
+  background: #008f8c;
 `;
