@@ -67,9 +67,7 @@ export default function MainAbout() {
                 </div>
                 <div className="conocimientos-frameworks-css col-sm mt-2">
                   <h5 className="card-text">
-                    <small className="text-info">
-                      ➡️ Frameworks CSS:
-                    </small>
+                    <small className="text-info">➡️ Frameworks CSS:</small>
                   </h5>
                   <p> ‣ BootStrap</p>
                   <p> ‣ Material UI</p>

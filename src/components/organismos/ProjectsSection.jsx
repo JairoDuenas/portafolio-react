@@ -1,14 +1,29 @@
 import { useState } from "react";
 import styled, { css } from "styled-components";
 import { useInView } from "../../hooks/useInView";
+import githubIcon from "../../assets/icons/github-logo.svg";
+import vercelIcon from "../../assets/icons/vercel-logo.svg";
 
 const PROJECTS = [
   {
     id: "01",
-    title: "E-Commerce Platform",
-    tags: ["React", "Node.js", "PostgreSQL"],
-    desc: "Plataforma de ventas con panel de administración, pasarela de pagos y sistema de inventario en tiempo real.",
-    year: "2024",
+    title: "Control de Gastos",
+    tags: ["React + Vite", "Supabase", "Chart.JS"],
+    desc: "Aplicación web para gestión de finanzas, gráficos en tiempo real de los ingresos y gastos de cada mes.",
+    year: "2026",
+
+    links: [
+      {
+        href: "https://github.com/JairoDuenas/control_gastos-React-Vite",
+        icon: githubIcon,
+        title: "Ver código en GitHub",
+      },
+      {
+        href: "https://jairo-control-gastos.vercel.app/",
+        icon: vercelIcon,
+        title: "Ver proyecto en Vercel",
+      },
+    ],
   },
   {
     id: "02",
@@ -16,6 +31,7 @@ const PROJECTS = [
     tags: ["Vue.js", "Firebase", "Tailwind"],
     desc: "App de gestión de tareas con colaboración en tiempo real, notificaciones push y soporte offline.",
     year: "2024",
+    links: [],
   },
   {
     id: "03",
@@ -23,6 +39,7 @@ const PROJECTS = [
     tags: ["Python", "FastAPI", "Docker"],
     desc: "Arquitectura de microservicios para sistema bancario con autenticación JWT y monitoreo centralizado.",
     year: "2023",
+    links: [],
   },
   {
     id: "04",
@@ -30,6 +47,7 @@ const PROJECTS = [
     tags: ["Next.js", "D3.js", "Prisma"],
     desc: "Dashboard analítico con visualizaciones interactivas, exportación de reportes y acceso por roles.",
     year: "2023",
+    links: [],
   },
 ];
 
@@ -71,14 +89,19 @@ export function ProjectsSection() {
             </Main>
             <Meta>
               <Year>{p.year}</Year>
-              <Arrow $hovered={hovered === i} viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M7 17L17 7M17 7H7M17 7V17"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                />
-              </Arrow>
+              <Links>
+                {p.links.map((link, j) => (
+                  <IconLink
+                    key={j}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    title={link.title}
+                  >
+                    <img src={link.icon} alt={link.title} />
+                  </IconLink>
+                ))}
+              </Links>
             </Meta>
           </Item>
         ))}
@@ -254,4 +277,39 @@ const Arrow = styled.svg`
     css`
       color: var(--fg);
     `}
+`;
+
+const Links = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+`;
+
+const IconLink = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  transition:
+    transform 0.2s,
+    opacity 0.2s;
+  opacity: 0.5;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    //background: #777;
+    border-radius: 50%;
+  }
+
+  &:hover {
+    transform: translate(1px, -1px);
+    opacity: 1;
+  }
 `;
