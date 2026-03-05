@@ -27,27 +27,60 @@ const PROJECTS = [
   },
   {
     id: "02",
-    title: "Task Management App",
-    tags: ["Vue.js", "Firebase", "Tailwind"],
-    desc: "App de gestión de tareas con colaboración en tiempo real, notificaciones push y soporte offline.",
-    year: "2024",
-    links: [],
+    title: " Crear tareas App",
+    tags: ["Reaact", "Vite", "Styled-component"],
+    desc: "App de gestión de tareas con colaboración en tiempo real.",
+    year: "2025",
+    links: [
+      {
+        href: "https://github.com/JairoDuenas/React-crear-tareas",
+        icon: githubIcon,
+        title: "Ver código en GitHub",
+      },
+      {
+        href: "https://crear-tareas.vercel.app/",
+        icon: vercelIcon,
+        title: "Ver proyecto en Vercel",
+      },
+    ],
   },
   {
     id: "03",
-    title: "API REST Microservices",
-    tags: ["Python", "FastAPI", "Docker"],
-    desc: "Arquitectura de microservicios para sistema bancario con autenticación JWT y monitoreo centralizado.",
-    year: "2023",
-    links: [],
+    title: "PLANTPEDIA",
+    tags: ["Next.JS", "Tailwind", "Vercel"],
+    desc: "Enciclopedia de las plantas, descripción de las mejores plantas para el día de San Valentín.",
+    year: "2024",
+    links: [
+      {
+        href: "https://github.com/JairoDuenas/Next-optimizacion",
+        icon: githubIcon,
+        title: "Ver código en GitHub",
+      },
+      {
+        href: "https://next-optimizacion-3hxm6t7bi-jairoduenas.vercel.app/entry/the-best-plants-for-valentines-day",
+        icon: vercelIcon,
+        title: "Ver proyecto en Vercel",
+      },
+    ],
   },
   {
     id: "04",
-    title: "Data Dashboard",
-    tags: ["Next.js", "D3.js", "Prisma"],
-    desc: "Dashboard analítico con visualizaciones interactivas, exportación de reportes y acceso por roles.",
+    title: "RECETAS MODERNAS",
+    tags: ["React", "API MealDB", "Vite"],
+    desc: "Encuentra las meores rectas para deleitarse con nuevos sabores",
     year: "2023",
-    links: [],
+    links: [
+      {
+        href: "https://github.com/JairoDuenas/PWA-React-recetas",
+        icon: githubIcon,
+        title: "Ver código en GitHub",
+      },
+      {
+        href: "https://react-recetas.vercel.app/",
+        icon: vercelIcon,
+        title: "Ver proyecto en Vercel",
+      },
+    ],
   },
 ];
 
