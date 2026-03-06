@@ -14,12 +14,12 @@ const PROJECTS = [
 
     links: [
       {
-        href: "https://github.com/JairoDuenas/control_gastos-React-Vite",
+        href: "#inicio",
         icon: githubIcon,
         title: "Ver código en GitHub",
       },
       {
-        href: "https://jairo-control-gastos.vercel.app/",
+        href: "https://control-gastos-react-vite-one.vercel.app/login",
         icon: vercelIcon,
         title: "Ver proyecto en Vercel",
       },
@@ -27,6 +27,25 @@ const PROJECTS = [
   },
   {
     id: "02",
+    title: "Pokédex personal",
+    tags: ["Reaact", "Vite", "Styled-component"],
+    desc: "App de cards de pókemon, explora y filtra tus favoritos de la primera generación.",
+    year: "2025",
+    links: [
+      {
+        href: "#inicio",
+        icon: githubIcon,
+        title: "Ver código en GitHub",
+      },
+      {
+        href: "https://react-pokemons-gamma.vercel.app/home",
+        icon: vercelIcon,
+        title: "Ver proyecto en Vercel",
+      },
+    ],
+  },
+  {
+    id: "03",
     title: " Crear tareas App",
     tags: ["Reaact", "Vite", "Styled-component"],
     desc: "App de gestión de tareas con colaboración en tiempo real.",
@@ -45,7 +64,7 @@ const PROJECTS = [
     ],
   },
   {
-    id: "03",
+    id: "04",
     title: "PLANTPEDIA",
     tags: ["Next.JS", "Tailwind", "Vercel"],
     desc: "Enciclopedia de las plantas, descripción de las mejores plantas para el día de San Valentín.",
@@ -64,7 +83,7 @@ const PROJECTS = [
     ],
   },
   {
-    id: "04",
+    id: "05",
     title: "RECETAS MODERNAS",
     tags: ["React", "API MealDB", "Vite"],
     desc: "Encuentra las meores rectas para deleitarse con nuevos sabores",
