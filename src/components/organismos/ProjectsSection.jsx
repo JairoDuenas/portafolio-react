@@ -57,7 +57,7 @@ const PROJECTS = [
         title: "Ver código en GitHub",
       },
       {
-        href: "https://crear-tareas.vercel.app/",
+        href: "https://react-crear-tareas.vercel.app/",
         icon: vercelIcon,
         title: "Ver proyecto en Vercel",
       },
