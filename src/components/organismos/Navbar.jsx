@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Download } from "lucide-react";
 
 const NAV_ITEMS = [
   { label: "INICIO", href: "#inicio" },
@@ -12,12 +13,35 @@ const NAV_ITEMS = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [canInstall, setCanInstall] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+
+    const handleInstallPrompt = (e) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+      setCanInstall(true);
+    };
+    window.addEventListener("beforeinstallprompt", handleInstallPrompt);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("beforeinstallprompt", handleInstallPrompt);
+    };
   }, []);
+
+  const handleInstall = async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === "accepted") {
+      setCanInstall(false);
+    }
+    setDeferredPrompt(null);
+  };
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -48,7 +72,7 @@ export function Navbar() {
           </span>
         </a>
 
-        <ul className="hidden md:flex gap-14">
+        <ul className="hidden md:flex gap-14 items-center">
           {NAV_ITEMS.map(({ label, href }) => (
             <li key={label}>
               <a
@@ -61,24 +85,73 @@ export function Navbar() {
               </a>
             </li>
           ))}
+          {canInstall && (
+            <li>
+              <motion.button
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                  boxShadow: [
+                    "0 0 0px rgba(239,239,234,0)",
+                    "0 0 15px rgba(239,239,234,0.3)",
+                    "0 0 0px rgba(239,239,234,0)",
+                  ],
+                }}
+                transition={{
+                  boxShadow: {
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  },
+                  opacity: { duration: 0.5 },
+                  scale: { duration: 0.5 },
+                }}
+                onClick={handleInstall}
+                className="text-[12px] tracking-[4px] text-bg font-bold flex items-center gap-2 bg-fg px-5 py-2.5 rounded-full hover:scale-105 transition-all duration-300"
+                data-hover
+              >
+                <Download size={14} strokeWidth={3} />
+                INSTALAR
+              </motion.button>
+            </li>
+          )}
         </ul>
 
-        <button
-          onClick={() => setOpen(!open)}
-          className="flex md:hidden flex-col justify-center gap-1.5 w-9 h-9 z-[300]"
-          aria-label="Menú"
-          data-hover
-        >
-          <span
-            className={`block h-[1.5px] bg-fg w-full transition-all duration-300 ease-custom ${open ? "translate-y-[7.5px] rotate-45" : ""}`}
-          />
-          <span
-            className={`block h-[1.5px] bg-fg w-full transition-all duration-300 ease-custom ${open ? "opacity-0 translate-x-2.5" : ""}`}
-          />
-          <span
-            className={`block h-[1.5px] bg-fg w-full transition-all duration-300 ease-custom ${open ? "-translate-y-[7.5px] -rotate-45" : ""}`}
-          />
-        </button>
+        <div className="flex items-center gap-6">
+          {canInstall && (
+            <motion.button
+              animate={{
+                scale: [1, 1.1, 1],
+                opacity: [0.7, 1, 0.7],
+              }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              onClick={handleInstall}
+              className="flex md:hidden text-fg p-2 transition-transform active:scale-90"
+              aria-label="Instalar App"
+              data-hover
+            >
+              <Download size={22} />
+            </motion.button>
+          )}
+
+          <button
+            onClick={() => setOpen(!open)}
+            className="flex md:hidden flex-col justify-center gap-1.5 w-9 h-9 z-[300]"
+            aria-label="Menú"
+            data-hover
+          >
+            <span
+              className={`block h-[1.5px] bg-fg w-full transition-all duration-300 ease-custom ${open ? "translate-y-[7.5px] rotate-45" : ""}`}
+            />
+            <span
+              className={`block h-[1.5px] bg-fg w-full transition-all duration-300 ease-custom ${open ? "opacity-0 translate-x-2.5" : ""}`}
+            />
+            <span
+              className={`block h-[1.5px] bg-fg w-full transition-all duration-300 ease-custom ${open ? "-translate-y-[7.5px] -rotate-45" : ""}`}
+            />
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>

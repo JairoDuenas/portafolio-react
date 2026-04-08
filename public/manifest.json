@@ -1,0 +1,23 @@
+{
+  "name": "Jairo Dueñas | Portafolio Dev",
+  "short_name": "Jairodv",
+  "description": "Portafolio profesional de Jairo Dueñas, Desarrollador Full-Stack especializado en JavaScript.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080808",
+  "theme_color": "#080808",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
