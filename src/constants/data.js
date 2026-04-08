@@ -67,12 +67,12 @@ export const PROJECTS = [
     year: "2024",
     links: [
       {
-        href: "https://plantpedia-react.vercel.app/",
+        href: "https://github.com/JairoDuenas/plantpedia-React",
         icon: githubIcon,
         title: "Ver código en GitHub",
       },
       {
-        href: "https://next-optimizacion.vercel.app/",
+        href: "https://plantpedia-react.vercel.app/",
         icon: vercelIcon,
         title: "Ver proyecto en Vercel",
       },
