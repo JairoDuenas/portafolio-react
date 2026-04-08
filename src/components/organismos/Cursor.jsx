@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import styled, { keyframes } from "styled-components";
 
 export function Cursor() {
   const [pos, setPos] = useState({ x: -100, y: -100 });
@@ -22,23 +21,16 @@ export function Cursor() {
     };
   }, []);
 
-  return <Container style={{ left: pos.x, top: pos.y }} $hovered={hovered} />;
+  return (
+    <div
+      style={{
+        transform: `translate3d(${pos.x}px, ${pos.y}px, 0) translate(-50%, -50%)`,
+      }}
+      className={`fixed rounded-full pointer-events-none z-[9999] mix-blend-difference transition-[width,height,border-color,background-color] duration-300 ${
+        hovered
+          ? "w-12 h-12 bg-transparent border-[1.5px] border-fg"
+          : "w-2 h-2 bg-fg border-none"
+      }`}
+    />
+  );
 }
-
-const Container = styled.div`
-  position: fixed;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition:
-    width 0.2s ease,
-    height 0.2s ease,
-    background 0.2s ease,
-    border 0.2s ease;
-  mix-blend-mode: difference;
-  width: ${({ $hovered }) => ($hovered ? "44px" : "10px")};
-  height: ${({ $hovered }) => ($hovered ? "44px" : "10px")};
-  background: ${({ $hovered }) => ($hovered ? "transparent" : "var(--fg)")};
-  border: ${({ $hovered }) => ($hovered ? "1.5px solid var(--fg)" : "none")};
-`;

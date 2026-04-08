@@ -1,13 +1,14 @@
 import { useEffect, useRef } from "react";
-import styled from "styled-components";
 
-export function Noise({ opacity = 0.04 }) {
+export function Noise({ opacity = 0.03 }) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
+    if (!canvas) return;
+
     const ctx = canvas.getContext("2d");
-    const size = 200;
+    const size = 128;
     canvas.width = size;
     canvas.height = size;
 
@@ -25,16 +26,11 @@ export function Noise({ opacity = 0.04 }) {
     ctx.putImageData(imageData, 0, 0);
   }, []);
 
-  return <Canvas ref={canvasRef} $opacity={opacity} />;
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{ opacity }}
+      className="absolute inset-0 w-full h-full pointer-events-none mix-blend-overlay z-[1]"
+    />
+  );
 }
-
-const Canvas = styled.canvas`
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  opacity: ${({ $opacity }) => $opacity};
-  mix-blend-mode: overlay;
-  background: #008f8c;
-`;

@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #080808;
+  --color-fg: #efefea;
+  --color-dim: #777;
+  --color-border: #1a1a1a;
+  --color-accent: #efefea;
+  --font-display: "Bebas Neue", sans-serif;
+  --font-body: "DM Mono", monospace;
+  --transition-custom: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-fade-in: fade-in 0.8s var(--transition-custom);
+  --animate-slide-up: slide-up 0.8s var(--transition-custom);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    cursor: none;
+    @apply bg-bg;
+  }
+
+  body {
+    @apply bg-bg text-fg font-body text-[13px] leading-relaxed overflow-x-hidden antialiased selection:bg-fg selection:text-bg;
+  }
+
+  a {
+    @apply text-inherit no-underline cursor-none transition-opacity duration-300;
+  }
+
+  ul {
+    @apply list-none p-0 m-0;
+  }
+
+  button {
+    @apply cursor-none bg-none border-none p-0;
+    font: inherit;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-1;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-bg;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-dim;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-fg via-fg to-dim bg-clip-text text-transparent;
+  }
+
+  .outline-text {
+    -webkit-text-stroke: 1px var(--color-fg);
+    @apply text-transparent;
+  }
+
+  .glass {
+    @apply bg-black/40 backdrop-blur-xl border border-white/5;
+  }
+
+  .section-padding {
+    @apply px-6 py-20 md:px-15 md:py-32;
+  }
+
+  .container-max {
+    @apply max-w-7xl mx-auto;
+  }
+}
