@@ -72,7 +72,7 @@ export const PROJECTS = [
         title: "Ver código en GitHub",
       },
       {
-        href: "https://next-optimizacion-3hxm6t7bi-jairoduenas.vercel.app/entry/the-best-plants-for-valentines-day",
+        href: "https://next-optimizacion.vercel.app/",
         icon: vercelIcon,
         title: "Ver proyecto en Vercel",
       },
