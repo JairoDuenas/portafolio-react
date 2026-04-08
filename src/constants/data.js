@@ -15,7 +15,7 @@ export const PROJECTS = [
         title: "Ver código en GitHub",
       },
       {
-        href: "https://control-gastos-react-vite-one.vercel.app/login",
+        href: "https://gasto-smart-two.vercel.app/login",
         icon: vercelIcon,
         title: "Ver proyecto en Vercel",
       },
